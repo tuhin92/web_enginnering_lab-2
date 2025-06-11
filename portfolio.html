@@ -11,19 +11,27 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="https://i.ibb.co/84Sff3J8/photo-2025-01-30-19-35-16.jpg" alt="Ali Emam" class="logo-img">
-                <span class="name">Ali Emam Al Mamun</span>
+                <a href="home.html" class="logo-link">
+                    <img src="https://i.ibb.co/84Sff3J8/photo-2025-01-30-19-35-16.jpg" alt="Ali Emam" class="logo-img">
+                    <span class="name">Ali Emam Al Mamun</span>
+                </a>
             </div>
             <nav class="header-nav">
                 <ul class="nav-menu">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                    <li><a href="portfolio.html">My Portfolio</a></li>
+                    <li><a href="home.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Me</a></li>
+                    <li><a href="portfolio.html" class="nav-link active">My Portfolio</a></li>
                 </ul>
             </nav>
             <div class="header-right">
-                <button class="search-btn">🔍 Search</button>
-                <button class="menu-btn">☰ Menu</button>
+                <button class="search-btn" aria-label="Search">
+                    <span class="icon">🔍</span>
+                    <span class="btn-text">Search</span>
+                </button>
+                <button class="menu-btn" aria-label="Menu">
+                    <span class="icon">☰</span>
+                    <span class="btn-text">Menu</span>
+                </button>
             </div>
         </div>
     </header>

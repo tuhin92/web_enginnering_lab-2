@@ -29,12 +29,14 @@ body {
 
 /* Header Styles */
 .header {
-    background: var(--dark-bg);
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header .container {
@@ -43,10 +45,17 @@ body {
     align-items: center;
 }
 
-.logo {
+/* Logo Styles */
+.logo-link {
     display: flex;
     align-items: center;
     gap: 15px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: translateY(-2px);
 }
 
 .logo-img {
@@ -54,6 +63,7 @@ body {
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .name {
@@ -63,39 +73,77 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* Navigation Menu */
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 40px;
 }
 
-.nav-menu a {
-    color: white;
+.nav-link {
+    color: #e5e7eb;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
-    transition: color 0.3s;
-    padding: 10px 0;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-.nav-menu a:hover {
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
     color: var(--primary-color);
 }
 
-.header-right button {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background 0.3s;
+/* Header Buttons */
+.header-right {
+    display: flex;
+    gap: 15px;
 }
 
-.header-right button:hover {
-    background: rgba(255, 255, 255, 0.2);
+.search-btn,
+.menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e5e7eb;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover,
+.menu-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.icon {
+    font-size: 14px;
+}
+
+.btn-text {
+    font-size: 14px;
+    font-weight: 500;
 }
 
 /* Portfolio Hero Section */
@@ -215,6 +263,27 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .btn-text {
+        display: none;
+    }
+
+    .search-btn,
+    .menu-btn {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 12px 0;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
     .portfolio-hero h1 {
         font-size: 2.5rem;
     }
