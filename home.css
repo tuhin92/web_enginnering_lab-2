@@ -16,41 +16,72 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styles - Transparent Background */
-.header {
-    background: transparent;
+/* --- Top Red Alert Bar --- */
+.top-alert-bar {
     position: fixed;
     top: 0;
+    left: 0;
+    width: 100vw;
+    background: #A51C30;
+    color: #fff;
+    text-align: center; /* <-- Change this line */
+    padding: 8px 32px 8px 16px;
+    font-size: 16px;
+    z-index: 3000;
+    font-family: inherit;
+    letter-spacing: 0.01em;
+}
+.top-alert-bar span {
+    display: inline-block;
+}
+
+/* Header Styles - Fully Transparent Background */
+.header {
+    position: fixed;
+    top: 40px;
+    left: 0;
     width: 100%;
-    z-index: 1000;
-    padding: 15px 0;
+    background: transparent; /* Fully transparent */
+    border-bottom: 1px solid #222;
+    z-index: 2000;
+    backdrop-filter: none;
+    padding: 0;
+    transition: background 0.3s;
+}
+
+.header.nav-black {
+    background: #000 !important;
+    backdrop-filter: none;
+    transition: background 0.3s;
 }
 
 .header .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .logo-img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
     object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: #fff;
+    border: 2px solid #fff;
 }
 
 .name {
-    color: #ffffff;
+    color: #fff;
     font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* Header Navigation */
@@ -82,23 +113,30 @@ body {
 
 .header-right {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .search-btn, .menu-btn {
-    background: rgba(255, 255, 255, 0.1);
+    background: #232323;
+    color: #fff;
     border: none;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
+    padding: 8px 18px;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
-    transition: background 0.3s;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .search-btn:hover, .menu-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #333;
+}
+
+.menu-btn {
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* Hero Section */
@@ -443,4 +481,91 @@ body {
 .featured-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Overlay navigation styles (unchanged) */
+.overlay-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #181818;
+    color: #fff;
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    animation: fadeIn 0.3s;
+}
+.overlay-nav.open {
+    display: flex;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.overlay-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px 0 32px;
+}
+.overlay-nav-header .logo-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+}
+.overlay-nav-header .name {
+    font-size: 17px;
+    font-weight: 700;
+}
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 0 0 16px;
+    transition: color 0.2s;
+}
+.close-btn:hover {
+    color: #E91E63;
+}
+.overlay-nav-menu {
+    margin: 60px 0 0 60px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.overlay-nav-menu li a {
+    color: #fff;
+    font-size: 48px;
+    font-weight: 300;
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 1px;
+}
+.overlay-nav-menu li a:hover {
+    color: #E91E63;
+}
+@media (max-width: 700px) {
+    .overlay-nav-header {
+        padding: 18px 16px 0 16px;
+    }
+    .overlay-nav-menu {
+        margin: 40px 0 0 20px;
+        gap: 24px;
+    }
+    .overlay-nav-menu li a {
+        font-size: 32px;
+    }
+    .header {
+        top: 32px;
+    }
+    .top-alert-bar {
+        font-size: 13px;
+    }
+}
+
+body.nav-open .top-alert-bar {
+    display: none;
 }
